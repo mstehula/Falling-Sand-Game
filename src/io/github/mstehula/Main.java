@@ -30,29 +30,21 @@ public class Main {
         render();
     }
 
+    private void shutdown() {
+        ui.closePane();
+    }
+
     private void tick() {
         for(int i = 0, width = elements.length; i < width; i++) {
             for (int j = 0, height = elements[i].length; j < height; j++) {
                 AbstractElement e = elements[i][j];
-                if(e != null) {
-                    e.tick();
-                }
+                e.doVoid();
             }
         }
     }
 
     private void render() {
         ui.paint();
-    }
-
-    private void shutdown() {
-        ui.closePane();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
-        System.exit(0);
     }
 
 }

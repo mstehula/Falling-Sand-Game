@@ -5,7 +5,7 @@ package io.github.mstehula.element;
  */
 public abstract class AbstractElement {
 
-    public void tick() {
+    public void doVoid() {
         return;
     }
 }
