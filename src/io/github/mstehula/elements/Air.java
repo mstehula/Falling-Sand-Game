@@ -8,7 +8,8 @@ import io.github.mstehula.elements.interfaces.Moveable;
 public class Air extends AbstractElement implements Moveable {
 
     public void tickMoveable() {
-        System.out.println("Tick: Moveable");
+        System.out.println(this.getClass().getSimpleName() + " Tick: Moveable");
+
     }
 
 }
