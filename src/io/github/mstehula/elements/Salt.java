@@ -1,7 +1,7 @@
-package io.github.mstehula.element;
+package io.github.mstehula.elements;
 
-import io.github.mstehula.element.interfaces.Moveable;
-import io.github.mstehula.element.interfaces.Soluble;
+import io.github.mstehula.elements.interfaces.Moveable;
+import io.github.mstehula.elements.interfaces.Soluble;
 
 /**
  * Created by MStehula on 7/6/2015.

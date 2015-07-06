@@ -1,8 +1,8 @@
-package io.github.mstehula.element;
+package io.github.mstehula.elements;
 
-import io.github.mstehula.element.interfaces.Flammable;
-import io.github.mstehula.element.interfaces.Liquid;
-import io.github.mstehula.element.interfaces.Moveable;
+import io.github.mstehula.elements.interfaces.Flammable;
+import io.github.mstehula.elements.interfaces.Liquid;
+import io.github.mstehula.elements.interfaces.Moveable;
 
 /**
  * Created by MStehula on 7/6/2015.

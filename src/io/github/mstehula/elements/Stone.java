@@ -1,4 +1,4 @@
-package io.github.mstehula.element;
+package io.github.mstehula.elements;
 
 /**
  * Created by MStehula on 7/6/2015.
