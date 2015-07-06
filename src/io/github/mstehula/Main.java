@@ -42,6 +42,7 @@ public class Main {
         for(int i = 0, width = elements.length; i < width; i++) {
             for (int j = 0, height = elements[i].length; j < height; j++) {
                 AbstractElement e = elements[i][j];
+                e.tick();
                 if(e instanceof Flammable) ((Flammable) e).tickFlammable();
                 if(e instanceof Liquid) ((Liquid) e).tickLiquid();
                 if(e instanceof Magnetic) ((Magnetic) e).tickMagnetic();
