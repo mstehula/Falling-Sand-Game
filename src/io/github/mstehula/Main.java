@@ -1,14 +1,15 @@
 package io.github.mstehula;
 
 import io.github.mstehula.element.AbstractElement;
+import io.github.mstehula.ui.MainUI;
 
 /**
  * Created by MStehula on 7/2/2015.
  */
-
 public class Main {
 
-    private AbstractElement[][] elements;
+    private MainUI ui = new MainUI();
+    private AbstractElement[][] elements = new AbstractElement[100][100];
 
     public static void main(String[] args) {
         new Main();
@@ -21,7 +22,7 @@ public class Main {
     }
 
     private void startup() {
-        elements = new AbstractElement[100][100];
+        ui.startPane();
     }
 
     private void loop() {
@@ -30,19 +31,20 @@ public class Main {
     }
 
     private void shutdown() {
-
+        ui.closePane();
     }
 
     private void tick() {
-        for(AbstractElement[] eArray : elements) {
-            for (AbstractElement e : eArray) {
+        for(int i = 0, width = elements.length; i < width; i++) {
+            for (int j = 0, height = elements[i].length; j < height; j++) {
+                AbstractElement e = elements[i][j];
                 e.doVoid();
             }
         }
     }
 
     private void render() {
-
+        ui.paint();
     }
 
 }
