@@ -1,3 +1,12 @@
+# =========================
+# IntelliJ IDEA Files
+# =========================
+
+.idea
+
+# =========================
+# Unwanted java files
+# =========================
 *.class
 
 # Mobile Tools for Java (J2ME)
