@@ -1,5 +1,7 @@
 package io.github.mstehula;
 
+import io.github.mstehula.controls.Keyboard;
+import io.github.mstehula.controls.Mouse;
 import io.github.mstehula.elements.AbstractElement;
 import io.github.mstehula.elements.Air;
 import io.github.mstehula.elements.interfaces.*;
@@ -10,6 +12,8 @@ import io.github.mstehula.ui.MainUI;
  */
 public class Main {
 
+    private Mouse mouse = new Mouse();
+    private Keyboard keyboard = new Keyboard();
     private MainUI ui = new MainUI();
     private AbstractElement[][] elements = new AbstractElement[100][100];
 
