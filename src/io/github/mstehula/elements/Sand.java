@@ -11,4 +11,7 @@ public class Sand extends AbstractElement implements Moveable {
 
     }
 
+    public void tick() {
+
+    }
 }

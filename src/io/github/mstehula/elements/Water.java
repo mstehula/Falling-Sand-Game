@@ -20,4 +20,8 @@ public class Water extends AbstractElement implements Moveable, Liquid, Solvent 
     public void tickSolvent() {
 
     }
+
+    public void tick() {
+
+    }
 }

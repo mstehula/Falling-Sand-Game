@@ -21,4 +21,8 @@ public class Oil extends AbstractElement implements Flammable, Liquid, Moveable 
 
     }
 
+    public void tick() {
+
+    }
+
 }

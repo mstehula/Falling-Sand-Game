@@ -5,4 +5,7 @@ package io.github.mstehula.elements;
  */
 public class Stone extends AbstractElement {
 
+    public void tick() {
+
+    }
 }

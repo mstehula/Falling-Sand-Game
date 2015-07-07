@@ -15,4 +15,8 @@ public class Salt extends AbstractElement implements Moveable, Soluble {
     public void tickSoluble() {
 
     }
+
+    public void tick() {
+
+    }
 }
