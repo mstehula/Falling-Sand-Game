@@ -1,23 +1,14 @@
 package io.github.mstehula;
 
-import io.github.mstehula.controls.Keyboard;
-import io.github.mstehula.controls.Mouse;
-import io.github.mstehula.controls.Window;
 import io.github.mstehula.elements.AbstractElement;
 import io.github.mstehula.elements.Air;
 import io.github.mstehula.elements.interfaces.*;
-import io.github.mstehula.ui.MainUI;
 
 /**
  * Created by MStehula on 7/7/2015.
  */
 public class Game {
 
-
-    private Mouse mouse = new Mouse();
-    private Keyboard keyboard = new Keyboard();
-    private Window window = new Window();
-    private MainUI ui = new MainUI(mouse, keyboard, window);
     private AbstractElement[][] elements = new AbstractElement[100][100];
 
     public void run() {
@@ -26,8 +17,12 @@ public class Game {
         this.shutdown();
     }
 
+    public void stop() {
+        Main.setRunning(false);
+    }
+
     private void startup() {
-        this.ui.startPane();
+        Main.getMainUI().startPane();
 
         for(int i = 0; i < this.elements.length; i++) {
             for(int j = 0; j < this.elements[i].length; j++) {
@@ -73,17 +68,17 @@ public class Game {
                 if(e instanceof Soluble) ((Soluble) e).tickSoluble();
                 if(e instanceof Solution) ((Solution) e).tickSolution();
                 if(e instanceof Solvent) ((Solvent) e).tickSolvent();
-                this.ui.paint(i, j, elements[i][j]);
+                Main.getMainUI().paint(i, j, elements[i][j]);
             }
         }
     }
 
     private void render() {
-        this.ui.paint();
+        Main.getMainUI().paint();
     }
 
     private void shutdown() {
-        this.ui.closePane();
+        Main.getMainUI().closePane();
         try {
             Thread.sleep(5000);
         } catch (InterruptedException ex) {

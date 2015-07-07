@@ -14,7 +14,7 @@ public class Window implements WindowListener{
 
     public void windowClosing(WindowEvent e) {
         System.out.println("Window closing");
-        Main.stop();
+        Main.getInstance().stop();
     }
 
     public void windowClosed(WindowEvent e) {  }
