@@ -9,7 +9,7 @@ import io.github.mstehula.elements.interfaces.*;
  */
 public class Game {
 
-    private AbstractElement[][] elements = new AbstractElement[100][100];
+    private AbstractElement[][] elements = new AbstractElement[(int) Main.getDimension().getWidth()][(int) Main.getDimension().getHeight()];
 
     public void run() {
         this.startup();
@@ -60,14 +60,6 @@ public class Game {
             for (int j = 0, height = this.elements[i].length; j < height; j++) {
                 AbstractElement e = this.elements[i][j];
                 e.tick();
-                if(e instanceof Flammable) ((Flammable) e).tickFlammable();
-                if(e instanceof Liquid) ((Liquid) e).tickLiquid();
-                if(e instanceof Magnetic) ((Magnetic) e).tickMagnetic();
-                if(e instanceof Moveable) ((Moveable) e).tickMoveable();
-                if(e instanceof Oxydizer) ((Oxydizer) e).tickOxydizer();
-                if(e instanceof Soluble) ((Soluble) e).tickSoluble();
-                if(e instanceof Solution) ((Solution) e).tickSolution();
-                if(e instanceof Solvent) ((Solvent) e).tickSolvent();
                 Main.getMainUI().paint(i, j, elements[i][j]);
             }
         }

@@ -5,19 +5,26 @@ import io.github.mstehula.controls.Mouse;
 import io.github.mstehula.controls.Window;
 import io.github.mstehula.ui.MainUI;
 
+import java.awt.*;
+
 /**
  * Created by MStehula on 7/2/2015.
  */
 public class Main {
 
     public static void main(String[] args) {
+        setDimension(new Dimension(800,600));
         setInstance(new Game());
         setMouse(new Mouse());
         setKeyboard(new Keyboard());
         setWindow(new Window());
-        setMainUI(new MainUI(getMouse(), getKeyboard(), getWindow()));
+        setMainUI(new MainUI());
         Main.instance.run();
     }
+
+    private static Dimension d;
+    public static Dimension getDimension() { return d; }
+    public static void setDimension(Dimension d) { Main.d = d; }
 
     private static Game instance;
     public static void setInstance(Game game) {
@@ -48,4 +55,5 @@ public class Main {
     private static MainUI ui;
     public static MainUI getMainUI() { return ui; }
     public static void setMainUI(MainUI ui) { Main.ui = ui; }
+
 }

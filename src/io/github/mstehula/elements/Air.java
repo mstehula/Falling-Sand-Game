@@ -7,6 +7,9 @@ import io.github.mstehula.elements.interfaces.Moveable;
  */
 public class Air extends AbstractElement implements Moveable {
 
+    private final float density;
+    public float getDensity() { return density; }
+
     public Air() {
         this.density = 1.225f;
         this.color = 0x070707;
@@ -17,6 +20,6 @@ public class Air extends AbstractElement implements Moveable {
     }
 
     public void tick() {
-
+        tickMoveable();
     }
 }
