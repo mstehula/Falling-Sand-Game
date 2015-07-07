@@ -14,7 +14,7 @@ public class Main {
 
     private Mouse mouse = new Mouse();
     private Keyboard keyboard = new Keyboard();
-    private MainUI ui = new MainUI();
+    private MainUI ui = new MainUI(mouse, keyboard);
     private AbstractElement[][] elements = new AbstractElement[100][100];
 
     public static void main(String[] args) {
@@ -22,30 +22,57 @@ public class Main {
     }
 
     private Main() {
-        startup();
-        loop();
-        shutdown();
+        this.startup();
+        this.loop();
+        this.shutdown();
     }
 
     private void startup() {
-        ui.startPane();
+        this.ui.startPane();
 
         for(int i = 0; i < elements.length; i++) {
             for(int j = 0; j < elements[i].length; j++) {
-                elements[i][j] = new Air();
+                this.elements[i][j] = new Air();
             }
         }
     }
 
     private void loop() {
-        tick();
-        render();
+        boolean running = true;
+        long currentTime = System.nanoTime();
+        long tickTime = currentTime;
+//        long renderTime = currentTime;
+        long secondTime = currentTime;
+        int tickCount = 0;
+        int renderCount = 0;
+        while(running) {
+            currentTime = System.nanoTime();
+            if((currentTime - tickTime) > (1000000000 / 20)) {
+                tickTime = currentTime;
+                tickCount++;
+                this.tick();
+            }
+            this.render();
+            renderCount++;
+            //Frame limiter to 60fps
+//            if((currentTime - renderTime) > (1000000000 / 60)) {
+//                renderTime = currentTime;
+//                renderCount++;
+//                this.render();
+//            }
+            if((currentTime - secondTime) > 1000000000) {
+                secondTime = currentTime;
+                System.out.println("Tick count: " + tickCount + ", Render count " + renderCount);
+                tickCount = 0;
+                renderCount = 0;
+            }
+        }
     }
 
     private void tick() {
-        for(int i = 0, width = elements.length; i < width; i++) {
-            for (int j = 0, height = elements[i].length; j < height; j++) {
-                AbstractElement e = elements[i][j];
+        for(int i = 0, width = this.elements.length; i < width; i++) {
+            for (int j = 0, height = this.elements[i].length; j < height; j++) {
+                AbstractElement e = this.elements[i][j];
                 e.tick();
                 if(e instanceof Flammable) ((Flammable) e).tickFlammable();
                 if(e instanceof Liquid) ((Liquid) e).tickLiquid();
@@ -55,16 +82,17 @@ public class Main {
                 if(e instanceof Soluble) ((Soluble) e).tickSoluble();
                 if(e instanceof Solution) ((Solution) e).tickSolution();
                 if(e instanceof Solvent) ((Solvent) e).tickSolvent();
+                this.ui.paint(i, j, elements[i][j]);
             }
         }
     }
 
     private void render() {
-        ui.paint();
+        this.ui.paint();
     }
 
     private void shutdown() {
-        ui.closePane();
+        this.ui.closePane();
         try {
             Thread.sleep(5000);
         } catch (InterruptedException ex) {
