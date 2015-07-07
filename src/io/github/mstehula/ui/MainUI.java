@@ -2,12 +2,15 @@ package io.github.mstehula.ui;
 
 import io.github.mstehula.controls.Keyboard;
 import io.github.mstehula.controls.Mouse;
+import io.github.mstehula.controls.Window;
 import io.github.mstehula.elements.AbstractElement;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 /**
  * Created by MStehula on 7/6/2015.
@@ -16,18 +19,20 @@ public class MainUI {
 
     private Mouse mouse;
     private Keyboard keyboard;
+    private Window window;
 
     private JFrame frame1;
     private Canvas canvas;
 
-    public MainUI(Mouse mouse, Keyboard keyboard) {
+    public MainUI(Mouse mouse, Keyboard keyboard, Window window) {
         this.mouse = mouse;
         this.keyboard = keyboard;
+        this.window = window;
     }
 
     public void startPane() {
         this.frame1 = new JFrame();
-        this.frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame1.addWindowListener(window);
 
         this.canvas = new Canvas();
         this.canvas.setSize(800, 600);
@@ -43,7 +48,8 @@ public class MainUI {
     }
 
     public void closePane() {
-
+        this.frame1.setVisible(false);
+        this.frame1.dispose();
     }
 
     public void paint(int i, int j, AbstractElement element) {

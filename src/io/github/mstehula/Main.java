@@ -2,6 +2,7 @@ package io.github.mstehula;
 
 import io.github.mstehula.controls.Keyboard;
 import io.github.mstehula.controls.Mouse;
+import io.github.mstehula.controls.Window;
 import io.github.mstehula.elements.AbstractElement;
 import io.github.mstehula.elements.Air;
 import io.github.mstehula.elements.interfaces.*;
@@ -14,8 +15,11 @@ public class Main {
 
     private Mouse mouse = new Mouse();
     private Keyboard keyboard = new Keyboard();
-    private MainUI ui = new MainUI(mouse, keyboard);
+    private Window window = new Window();
+    private MainUI ui = new MainUI(mouse, keyboard, window);
     private AbstractElement[][] elements = new AbstractElement[100][100];
+
+    private static boolean running = true;
 
     public static void main(String[] args) {
         new Main();
@@ -30,22 +34,20 @@ public class Main {
     private void startup() {
         this.ui.startPane();
 
-        for(int i = 0; i < elements.length; i++) {
-            for(int j = 0; j < elements[i].length; j++) {
+        for(int i = 0; i < this.elements.length; i++) {
+            for(int j = 0; j < this.elements[i].length; j++) {
                 this.elements[i][j] = new Air();
             }
         }
     }
 
     private void loop() {
-        boolean running = true;
         long currentTime = System.nanoTime();
         long tickTime = currentTime;
-//        long renderTime = currentTime;
         long secondTime = currentTime;
         int tickCount = 0;
         int renderCount = 0;
-        while(running) {
+        while(this.running) {
             currentTime = System.nanoTime();
             if((currentTime - tickTime) > (1000000000 / 20)) {
                 tickTime = currentTime;
@@ -54,12 +56,6 @@ public class Main {
             }
             this.render();
             renderCount++;
-            //Frame limiter to 60fps
-//            if((currentTime - renderTime) > (1000000000 / 60)) {
-//                renderTime = currentTime;
-//                renderCount++;
-//                this.render();
-//            }
             if((currentTime - secondTime) > 1000000000) {
                 secondTime = currentTime;
                 System.out.println("Tick count: " + tickCount + ", Render count " + renderCount);
@@ -67,6 +63,14 @@ public class Main {
                 renderCount = 0;
             }
         }
+    }
+
+    public static void stop() {
+        running = false;
+    }
+
+    public void stopLoop() {
+        this.running = false;
     }
 
     private void tick() {
