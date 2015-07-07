@@ -5,8 +5,5 @@ package io.github.mstehula.elements.interfaces;
  */
 public interface Moveable {
 
-    float density = 0.0F;
-
     void tickMoveable();
-
 }
