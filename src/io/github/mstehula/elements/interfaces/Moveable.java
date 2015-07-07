@@ -1,4 +1,4 @@
-package io.github.mstehula.element.interfaces;
+package io.github.mstehula.elements.interfaces;
 
 /**
  * Created by MStehula on 7/6/2015.
@@ -6,5 +6,4 @@ package io.github.mstehula.element.interfaces;
 public interface Moveable {
 
     void tickMoveable();
-
 }
