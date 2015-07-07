@@ -5,7 +5,9 @@ package io.github.mstehula.elements;
  */
 public abstract class AbstractElement {
 
-    public void tick() {
-        return;
-    }
+    protected float density = 0.0F;
+    protected int color = 0;
+    public int getColor() { return this.color; }
+
+    public abstract void tick();
 }
