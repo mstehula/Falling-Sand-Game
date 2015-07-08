@@ -18,7 +18,6 @@ public class Air extends AbstractElement implements Moveable {
     }
 
     public void tickMoveable() {
-//        System.out.println(this.getClass().getSimpleName() + " Tick: Moveable");
     }
 
     public void tick() {

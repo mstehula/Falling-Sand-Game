@@ -2,6 +2,7 @@ package io.github.mstehula;
 
 import io.github.mstehula.elements.AbstractElement;
 import io.github.mstehula.elements.Air;
+import io.github.mstehula.elements.Stone;
 import io.github.mstehula.elements.interfaces.*;
 
 /**
@@ -26,7 +27,12 @@ public class Game {
 
         for(int i = 0; i < this.elements.length; i++) {
             for(int j = 0; j < this.elements[i].length; j++) {
-                this.elements[i][j] = new Air();
+                if(j > 20 && j < 40) {
+                    this.elements[i][j] = new Stone();
+                }
+                else {
+                    this.elements[i][j] = new Air();
+                }
             }
         }
     }
