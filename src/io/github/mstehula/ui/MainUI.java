@@ -6,6 +6,7 @@ import io.github.mstehula.elements.AbstractElement;
 import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
 
 /**
  * Created by MStehula on 7/6/2015.
@@ -30,8 +31,6 @@ public class MainUI {
 
         this.frame1.pack();
         this.frame1.setVisible(true);
-
-        this.canvas.createBufferStrategy(2);
     }
 
     public void closePane() {
@@ -40,11 +39,10 @@ public class MainUI {
     }
 
     public void paint(int i, int j, AbstractElement element) {
-        img.setRGB(i, j, element.getColor());
+        img.getRaster().setPixel(i, j, element.getColorArray());
     }
 
     public void paint() {
         this.canvas.getGraphics().drawImage(img, this.canvas.getWidth(), this.canvas.getHeight(), null);
-        img.createGraphics();
     }
 }

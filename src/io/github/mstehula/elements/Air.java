@@ -2,6 +2,8 @@ package io.github.mstehula.elements;
 
 import io.github.mstehula.elements.interfaces.Moveable;
 
+import java.awt.*;
+
 /**
  * Created by MStehula on 7/6/2015.
  */
@@ -12,7 +14,7 @@ public class Air extends AbstractElement implements Moveable {
 
     public Air() {
         this.density = 1.225f;
-        this.color = 0x070707;
+        this.color = new Color(0x0f0f0f);
     }
 
     public void tickMoveable() {
