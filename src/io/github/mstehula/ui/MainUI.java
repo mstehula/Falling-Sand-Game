@@ -1,15 +1,11 @@
 package io.github.mstehula.ui;
 
 import io.github.mstehula.Main;
-import io.github.mstehula.elements.AbstractElement;
+import io.github.mstehula.elements.abstracts.Element;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.WritableRaster;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by MStehula on 7/6/2015.
@@ -49,7 +45,7 @@ public class MainUI {
         this.frame1.dispose();
     }
 
-    public void paint(int i, int j, AbstractElement element) {
+    public void paint(int i, int j, Element element) {
         img.getRaster().setPixel(i, j, element.getColorArray());
     }
 
